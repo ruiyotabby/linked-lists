@@ -15,6 +15,15 @@ class LinkedList
     @head = nil
     @tail = nil
   end
+
+  def prepend(value)
+    if @head.nil?
+      @head = value
+      @tail = value
+    end
+    value.next_node = @head
+    @head = value
+  end
 end
 
 m = Node.new
