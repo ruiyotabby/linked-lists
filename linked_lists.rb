@@ -19,27 +19,45 @@ class LinkedList
 
   def prepend(value)
     if @head.nil?
-      @head = value
       @tail = value
     else
       value.next_node = @head
-      @head = value
     end
+    @head = value
   end
 
   def append(value)
     if @tail.nil?
       @head = value
-      @tail = value
     else
       @tail.next_node = value
-      @tail = value
     end
+    @tail = value
+  end
+
+  def size
+    num = @head
+    i = 0
+    while !num.nil?
+      i += 1
+      num = num.next_node
+    end
+    i
   end
 end
 
 m = Node.new
 m.data = 4
+n = Node.new
+n.data = 6
+m.next_node = n
+k = Node.new
+k.data = 234
+n.next_node = k
 L = LinkedList.new
 L.prepend(m)
-print L.tail.data
+L.append(n)
+# L.append(k)
+# p L.head
+p L.tail
+# p L.size
