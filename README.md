@@ -5,7 +5,7 @@ LinkedList class, which will represent the full list.
 Node class, containing a #value method and a link to the #next_node, set both as nil by default.
 The following methods are in the linked list class:
 
-#### append(value) adds a new node containing value to the end of the list
+#append(value) adds a new node containing value to the end of the list
 #prepend(value) adds a new node containing value to the start of the list
 #size returns the total number of nodes in the list
 #head returns the first node in the list
