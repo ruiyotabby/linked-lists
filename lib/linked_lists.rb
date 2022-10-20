@@ -31,14 +31,10 @@ class LinkedList
     @tail = node
   end
 
-  def size
-    node = @head
-    count = 0
-    until node.nil?
-      node = node.next_node
-      count += 1
-    end
-    count
+  def size(node = @head, count = 0)
+    return count if node.nil?
+
+    size(node.next_node, count + 1)
   end
 
   def at(index)
