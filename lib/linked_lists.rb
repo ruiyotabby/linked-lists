@@ -37,16 +37,11 @@ class LinkedList
     size(node.next_node, count + 1)
   end
 
-  def at(index)
+  def at(index, count = 0, node = @head)
     return nil if index > size
+    return node if count == index
 
-    count = 0
-    node = @head
-    loop do
-      count += 1
-      node = node.next_node
-      return node if count == index
-    end
+    at(index, count + 1, node.next_node)
   end
 
   def pop

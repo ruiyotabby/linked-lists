@@ -24,3 +24,4 @@ L.remove_at(0)
 p 'hh'
 p L
 p L.size
+p L.at(0)
