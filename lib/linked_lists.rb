@@ -2,6 +2,8 @@ require_relative 'node'
 
 # This object contains the list to the linked list
 class LinkedList
+  attr_reader :head, :tail
+
   def initialize
     @head = nil
     @tail = nil
@@ -9,8 +11,7 @@ class LinkedList
 
   def prepend(value)
     unless value.class == Node
-      node = Node.new
-      node.data = value
+      node = Node.new(value)
     end
     node = value if value.class == Node
     if @head.nil?
@@ -23,8 +24,7 @@ class LinkedList
 
   def append(value)
     unless value.class == Node
-      node = Node.new
-      node.data = value
+      node = Node.new(value)
     end
     node = value if value.class == Node
     if @tail.nil?
@@ -90,5 +90,16 @@ class LinkedList
 
     print "( #{node.data} ) -> "
     to_s(node.next_node)
+  end
+
+  def insert_at(value, index, count = 0, node = @head)
+    return 'Failed, the index is greater than the list size' if node.nil?
+
+    if count + 1 == index
+      new_node = Node.new(value)
+      new_node.next_node = node.next_node
+      return node.next_node = new_node
+    end
+    insert_at(value, index, count + 1, node.next_node)
   end
 end

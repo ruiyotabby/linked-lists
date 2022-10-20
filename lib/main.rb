@@ -15,4 +15,7 @@ L.append(566)
 L.prepend(10)
 L.append(k)
 p L
-puts L
+# puts L
+p L.insert_at(12, 6)
+p L
+# puts L
