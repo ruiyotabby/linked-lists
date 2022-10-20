@@ -80,6 +80,16 @@ class LinkedList
       node = node.next_node
     end
   end
+
+  def contains?(value)
+    node = @head
+    until node.nil?
+      return true if node.data == value
+
+      node = node.next_node
+    end
+    false
+  end
 end
 
 m = Node.new
@@ -102,4 +112,4 @@ p L.size
 # p L.at(1)
 p L.pop
 p L.tail
-
+p L.contains?(566)
