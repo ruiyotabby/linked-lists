@@ -10,9 +10,7 @@ class LinkedList
   end
 
   def prepend(value)
-    unless value.class == Node
-      node = Node.new(value)
-    end
+    node = Node.new(value) unless value.class == Node
     node = value if value.class == Node
     if @head.nil?
       @tail = node
@@ -23,9 +21,7 @@ class LinkedList
   end
 
   def append(value)
-    unless value.class == Node
-      node = Node.new(value)
-    end
+    node = Node.new(value) unless value.class == Node
     node = value if value.class == Node
     if @tail.nil?
       @head = node
@@ -95,11 +91,23 @@ class LinkedList
   def insert_at(value, index, count = 0, node = @head)
     return 'Failed, the index is greater than the list size' if node.nil?
 
+    return prepend(value) if index.zero?
+    return append(value) if index == size
+
     if count + 1 == index
       new_node = Node.new(value)
       new_node.next_node = node.next_node
       return node.next_node = new_node
     end
     insert_at(value, index, count + 1, node.next_node)
+  end
+
+  def remove_at(index, node = @head, count = 0)
+    return 'Failed' if node.nil?
+    return pop if index == size
+    return prepend(node.next_node.data) if index.zero?
+    return node.next_node = node.next_node.next_node if index == count + 1
+
+    remove_at(index, node.next_node, count + 1)
   end
 end

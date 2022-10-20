@@ -15,7 +15,12 @@ L.append(566)
 L.prepend(10)
 L.append(k)
 p L
-# puts L
-p L.insert_at(12, 6)
+puts L
+L.insert_at(12, 2)
+p 'hh'
+# p L.head
 p L
-# puts L
+L.remove_at(0)
+p 'hh'
+p L
+p L.size
