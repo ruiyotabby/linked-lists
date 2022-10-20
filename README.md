@@ -3,7 +3,7 @@ This is a linked list project which contains two classes:
 
 LinkedList class, which will represent the full list.
 Node class, containing a #value method and a link to the #next_node, set both as nil by default.
-Build the following methods in your linked list class:
+The following methods are in the linked list class:
 
 #append(value) adds a new node containing value to the end of the list
 #prepend(value) adds a new node containing value to the start of the list
