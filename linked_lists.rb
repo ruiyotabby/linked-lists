@@ -90,6 +90,17 @@ class LinkedList
     end
     false
   end
+
+  def find(value)
+    index = 0
+    node = @head
+    until node.nil?
+      return index if node.data == value
+
+      index += 1
+      node = node.next_node
+    end
+  end
 end
 
 m = Node.new
@@ -109,7 +120,3 @@ L.append(k)
 p L.head
 p L.tail
 p L.size
-# p L.at(1)
-p L.pop
-p L.tail
-p L.contains?(566)
