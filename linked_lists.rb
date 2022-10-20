@@ -57,12 +57,27 @@ class LinkedList
 
   def at(index)
     return nil if index > size
+
     count = 0
     node = @head
     loop do
       count += 1
       node = node.next_node
       return node if count == index
+    end
+  end
+
+  def pop
+    node = @head
+    loop do
+      return nil if node.nil?
+
+      if node.next_node == @tail
+        @tail = node
+        @tail.next_node = nil
+        break
+      end
+      node = node.next_node
     end
   end
 end
@@ -76,12 +91,15 @@ k = Node.new
 k.data = 234
 n.next_node = k
 L = LinkedList.new
-# L.prepend(m)
-# L.append(n)
+L.prepend(m)
+L.append(n)
 L.append(566)
 L.prepend(10)
 L.append(k)
 p L.head
 p L.tail
 p L.size
-p L.at(1)
+# p L.at(1)
+p L.pop
+p L.tail
+
