@@ -10,7 +10,6 @@ end
 
 # This object contains the list to the linked list
 class LinkedList
-  attr_reader :head, :tail
 
   def initialize
     @head = nil
@@ -91,15 +90,18 @@ class LinkedList
     false
   end
 
-  def find(value)
-    index = 0
-    node = @head
-    until node.nil?
-      return index if node.data == value
+  def find(value, index = 0, node = @head)
+    return nil if node.nil?
+    return index if node.data == value
 
-      index += 1
-      node = node.next_node
-    end
+    find(value, index + 1, node.next_node)
+  end
+
+  def to_s(node = @head)
+    print "( #{node.data} ) -> "
+    return print "( #{node.data} ) -> nil" if node == @tail
+
+    to_s(node.next_node)
   end
 end
 
@@ -107,16 +109,16 @@ m = Node.new
 m.data = 4
 n = Node.new
 n.data = 6
-m.next_node = n
+# m.next_node = n
 k = Node.new
 k.data = 234
-n.next_node = k
+# n.next_node = k
 L = LinkedList.new
 L.prepend(m)
 L.append(n)
 L.append(566)
 L.prepend(10)
 L.append(k)
-p L.head
-p L.tail
 p L.size
+p L.find(566)
+puts L
